@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="anim" style="width:100px;height:100px; background-color: blue;">
+
+    </div>
+    <div style="width:100px;height:100px; background-color: green;">
+        <p id="select-parent"></p>
+    </div>
+    <ul id="list">
+        <li>
+            <ul>
+                <li>Hello</li>
+            </ul>
+        </li>
+        <li>
+            Hello
+        </li>
+        <li>
+            hello
+        </li>
+    </ul>
+    <ul>
+        <li>hi</li>
+        <li>hi 2</li>
+        <li>hi 3</li>
+        <li>hi 4</li>
+    </ul>
+    <form action="" class="my-form">
+        <input type="text"><input type="text">
+    </form>
+    <input type="text" name="" id="">
+    <button type="button" id="animate-btn">animate</button>
+    <div class="new_table">
+        <table border="1">
+            <tr>
+                <td>Index</td>
+                <td>Column 1</td>
+                <td>Column 2</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Row 1, Column 1</td>
+                <td>Row 1, Column 2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Row 2, Column 1</td>
+                <td>Row 2, Column 2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Row 3, Column 1</td>
+                <td>Row 3, Column 2</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+    </div>
+    <div>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+    </div>
+    <div>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <a >click no href </a>
+        <a >click no href </a>
+        <a >click no href </a>
+        <a >click no href </a>
+        <a href="www.google.com"> href </a>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('#animate-btn').click(function (){
+        $('#anim').animate({height:'200px'},5000)
+        $('#select-parent').parent().css('background-color','red') 
+        $('#list>li').css('text-transform','uppercase')
+        $('#list>li').css('text-transform', 'uppercase');
+        $('.my-form input[type="text"]').attr('placeholder','Enter Something');
+        $('.new_table table tr:nth-of-type(odd)').append("<td>row 0</td>")
+        $('ul').each(function(){
+            if($(this).children("li").first().text() !== 'Item 0'){
+                $(this).prepend('<li>Item 0</li>')
+            }
+        })
+        $('p:not(:first-child):not(:last-child)').css('background', 'linear-gradient(#e66465, #9198e5)');
+        $('a').each(function (){
+            if(!$(this).attr('href')){
+                $(this).attr('href',"#")
+                $(this).css('color','red')
+            }
+        })
+    })
+</script>
+</html>
+
+
+<!--
+
+Effects:
+    Use .animate() to move a <div> to the right by 200px when a button is clicked.
+
+Traversing the DOM:
+    Select the parent of an element with the ID #child and change its background color.
+
+Complex Selection and Manipulation:
+    Select all <li> elements that are direct children of <ul> elements and set their text to uppercase. Ensure that only direct children <li> are selected, not nested ones.
+    Find all <input> elements of type text that are inside a <form> with a specific class (e.g., .my-form). Set the placeholder of each selected <input> to "Enter text here...".
+    Select all paragraphs (<p>) that are not the first or last child of their parent and apply a gradient background to them.
+
+Manipulating Nested Elements:
+    Select all <div> elements with a class .parent and, within each, find a nested <span> element with a class .child and change its font color to green. If no such <span> exists, append one with the text "New Child".
+    Find all <section> elements with at least one <article> child and prepend a <h2> element with the text "Section Header" to each <section>.
+
+Dynamic Content Manipulation:
+    Select all <tr> elements in a table with an even index, and for each, add a new cell (<td>) at the end of the row with the text "New Cell".
+    For each <ul> on the page, prepend a <li> with the text "Item 0". Ensure this new item is added only once, even if the code is run multiple times.
+    Find all <a> elements that do not have the href attribute and add an attribute with a value of "#". Then, change the text color of these links to red.
+

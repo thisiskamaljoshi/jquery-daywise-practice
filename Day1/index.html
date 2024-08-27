@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="header">Hi</p>
+    <p class="highlight">Hello</p>
+    <p class="highlight">Hello Hero</p>
+    <div class="main">
+        <p>Hello Kamal</p>
+    </div>
+    <h2>heading h2</h2>
+    <h2>heading h2</h2>
+    <ul class="curd_recipie">
+        <li class="first_step">Recipie for curd</li>
+    </ul>
+    <p class="hide-me">Hide this</p>
+    <p class="hide-me">Hide this also</p>
+    <p class="toggle-me">Toggle</p>
+    <p id="hover-para">Hover color change</p>
+    <img id="image-new" style="display: none;" src="https://www.lifewire.com/thmb/uYajoUx5GCUFjdRw5oykO_kFwh8=/1359x761/filters:no_upscale():max_bytes(150000):strip_icc()/500px-bbeb4fcf7c824e9a9db3345c9f8e433b.jpg" />
+    <button type="button" id="basic">basic</button>
+    <button type="button" id="fadenew">fade</button>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+$('#header').click(function(){
+    $(this).css('background-color','red');
+})
+$(".highlight").css('border','1px solid red');
+// $("div").text("Hello how r u");
+$('.curd_recipie').append("<li>Put milk in a small conatiner</li>");
+$('.curd_recipie').after("<p>Hi</p>")
+$('.main').prepend('<h2>Welcome</h2>');
+$('h2').css('font-size','40px');
+$('.hide-me').hide();
+$('#basic').click(function(){
+    $('.toggle-me').toggle();    
+})
+$("#hover-para").hover(function(){
+    $(this).css('color','red');
+},function(){
+    $(this).css('color','blue');
+});
+
+$('#fadenew').click(function(){
+ $('img').fadeIn(2000);   
+})
+
+</script>
+</html>
+
+
+<!-- 
+
+Selecting Elements:
+    Select an element with the ID #header and change its background color to blue.
+    Select all elements with the class .highlight and add a border around them.
+
+Manipulating Content:
+    Replace the content of all <div> elements with the text "This content has been replaced".
+    Append a new <li> item to a <ul> list with the text "Put milk in a small conatiner".
+    Prepend a <h2> heading at the beginning of a <div> with the text "Welcome!".
+
+CSS Manipulations:
+    Change the font size of all <h1> elements to 24px.
+    Hide all elements with the class .hide-me.
+    Toggle the visibility of a paragraph with the ID #toggle-para when a button is clicked.
+
+Event Handling:
+    Create a button that, when clicked, displays an alert saying "Button was clicked!".
+    Change the color of a paragraph when the mouse hovers over it and revert it back when the mouse leaves.
+    Create an input box that logs the current input value to the console every time a key is pressed.
+
+Effects:
+    Use the .fadeOut() method to fade out all images on the page when a button is clicked. -->

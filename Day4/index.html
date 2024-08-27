@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hidden-div {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="anim" style="width:100px;height:100px; background-color: blue;">
+
+    </div>
+    <div style="width:100px;height:100px; background-color: green;">
+        <p id="select-parent"></p>
+    </div>
+    <ul id="list">
+        <li>
+            <ul>
+                <li>Hello</li>
+            </ul>
+        </li>
+        <li>
+            Hello
+        </li>
+        <li>
+            hello
+        </li>
+    </ul>
+    <ul>
+        <li>hi</li>
+        <li>hi 2</li>
+        <li>hi 3</li>
+        <li>hi 4</li>
+    </ul>
+    <form action="" class="my-form">
+        <input type="text"><input type="text">
+    </form>
+    <input type="text" name="" id="">
+    
+    <div class="new_table">
+        <table border="1">
+            <tr>
+                <td>Index</td>
+                <td>Column 1</td>
+                <td>Column 2</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Row 1, Column 1</td>
+                <td>Row 1, Column 2</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Row 2, Column 1</td>
+                <td>Row 2, Column 2</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Row 3, Column 1</td>
+                <td>Row 3, Column 2</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <p data-role="admin">Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+    </div>
+    <div>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+    </div>
+    <div>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <p>Hello</p>
+        <a >click no href </a>
+        <a >click no href </a>
+        <a >click no href </a>
+        <a >click no href </a>
+        <a href="www.google.com"> href </a>
+        <button type="button" data-click-count="0">Click count</button>
+    </div>
+    <section>
+        How r u
+    </section>
+    <div class="hidden-div"></div>
+    <img src="https://cubanvr.com/wp-content/uploads/2023/07/ai-image-generators.webp" width="100" srcset="">
+    <button type="button" id="animate-btn">animate</button>
+    <form id="user-form">
+        <input type="text" name="fname" id="">
+        <input type="text" name="lname" id="">
+        <input type="email" name="email" id="">
+        <input type="tel" name="phone" id="">
+    </form>
+    <section>
+        <h1>Hello 1</h1>
+    </section>
+    <div class="list-wrapper">
+        <ul>
+            <li>a</li>
+            <li>b</li>
+        </ul>
+        <ul>
+            <li>c</li>
+            <li>d</li>
+        </ul>
+        <ul>
+            <li>e</li>
+            <li>f</li>
+        </ul>
+    </div>
+    <section>
+        <h1>Hello</h1>
+    </section>
+    
+    
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('#animate-btn').click(function (){
+        $('[data-role]').css('background-color','yellow');
+        $('[data-role]').removeAttr('data-role');
+        $('img:not([alt])').attr('alt','default').wrap('<figure></figure>');
+        
+        $('div').each(function(){
+            if($(this).is(':hidden')){
+                $(this).fadeIn(5000,function(){
+                    $(this).append('<p>Loaded</p>');
+                });
+                
+            }
+        })
+
+        $('#user-form input').each(function (){
+            $(this).css('border','2px solid red').css('background-color','lightgray').attr('placeholder','Enter your input')
+        })
+
+        $('.list-wrapper ul:last-of-type').each(function (){
+            $(this).find('li:last-child').remove();
+            $(this).append('<li>Appended Item</li>')
+        })
+        
+        $('section:has(h1)').each(function(){
+            $(this).find('h1').insertBefore(this);
+        })
+        
+    })
+    $('button[data-click-count]').click(function (){
+        $(this).attr('data-click-count',parseInt($(this).attr('data-click-count'))+1);
+    })
+    
+</script>
+</html>
+
+<!-- 
+
+Attribute and Data Manipulation:
+    Select all elements with a data-role attribute and change their background color to yellow. Then, remove the data-role attribute from those elements.
+    Find all <img> elements without an alt attribute, set a default alt text as "Default image description", and then wrap these images in a <figure> tag.
+    For all <button> elements with a data-click-count attribute, increment the value of data-click-count by 1 each time the button is clicked.
+
+Chained Manipulations and Transforms:
+    Select all <div> elements that are not visible (display: none;) and fade them in over 2 seconds, then immediately after fading in, append a <p> with the text "Loaded!" to each.
+    Select all <input> fields inside a form with the ID #user-form and chain a series of manipulations: set the border to 2px solid red, change the background color to lightgray, and add a placeholder text "Enter your input".
+
+Content and Structure Modification:
+    Select all <div> elements with a class .list-wrapper, find the last <ul> child within each, and remove its last <li> element. Then, append a new <li> element with the text "Appended Item".
+    Find all <section> elements containing an <h1> tag, remove the <h1>, and insert it before the <section> as a sibling element. -->
