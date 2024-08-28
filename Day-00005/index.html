@@ -11,9 +11,36 @@
         <input type="time" name="lastname" id="">
     </form>
     <button id="basicbtn">Run Jquery</button>
+    <div class="content">
+        <p>hello01</p>
+        <p>hello02</p>
+    </div>
+    <div class="content">
+        <p>hello01</p>
+        <p>hello02</p>
+    </div>
+    <div>
+        <p>hello01</p>
+        <p>hello02</p>
+    </div>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
     $('input[name$="name"]').css('border-color','red');
+    $('#basicbtn').click(function (){
+        $('div.content').each(function (){
+            $(this).find('p:nth-of-type(2)').clone().appendTo($(this));
+        })
+    })
 </script>
+
+<!-- 
+
+Advanced Filters and Traversal:
+    Select all <input> elements with a name attribute ending in "name" and change their border color to orange. Then, for these inputs, find their closest <form> parent and add a class .highlight-form. 
+    Find the second <p> inside every <div> with a class .content and clone it. Append this clone to the end of each respective <div>        
+        
+        
+        
+-->
