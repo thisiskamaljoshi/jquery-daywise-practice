@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="time" name="firstname" id="">
+        <input type="time" name="lastname" id="">
+    </form>
+    
+    <div class="content">
+        <p>hello01</p>
+        <p>hello02</p>
+    </div>
+    <div class="content">
+        <p>hello01</p>
+        <p>hello02</p>
+    </div>
+    <div>
+        <p>hello01</p>
+        <p>hello02</p>
+    </div>
+    <a href="" data-external="true"></a>
+    <a href="" data-external="false"></a>
+    <p data-toggle="true"></p>
+    <button id="basicbtn">Run Jquery</button>
+    <div><span class="special"></span></div>
+    <div class="json-holder"></div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    
+    $('#basicbtn').click(function (){
+        $('a[data-external]').each(function(){
+            $(this).attr('target','_blank');
+            if($(this).attr('data-external')==="true"){
+                $(this).attr('rel',"noopener noreferrer");
+            }
+        })
+        $('[data-toggle="true"]').removeAttr('data-toggle').addClass('toggled-on');
+        $('div:has(span.special)').each(function(){
+            $(this).find('.special').text("Updated Text");
+        })
+        $('div.json-holder').each(function (){
+            let obj = { name: "John", age: 30 };
+            let stringifiedObj = JSON.stringify(obj);
+            $(this).text(stringifiedObj);
+        })
+    })
+    
+</script>
+
+<!-- 
+
+Custom Attribute Manipulation:
+    For all <a> elements with a data-external attribute, set their target attribute to _blank. If the data-external attribute is set to "true", also set the rel attribute to "noopener noreferrer".
+    Find all elements with a data-toggle="true" attribute, remove this attribute, and add a class .toggled-on to each.
+    
+Text and HTML Manipulation:
+    Select all <div> elements that contain <span> elements with a specific class (e.g., .special) and change the text of those <span> elements to "Updated Text".
+    Find all elements with the class .json-holder and set their HTML content to be the JSON representation of an object: { name: "John", age: 30 }.
+        
+-->

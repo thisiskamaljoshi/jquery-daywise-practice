@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height:30px; background-color: blue;" class="box"></div>
+    <button type="button" id="myButton">Click me</button>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('#myButton').click(function(){
+        console.log('Clicked');
+    })
+
+    $('.box').hover(function (){
+        $(this).css('background-color','red');
+    },function(){
+        $(this).css('background-color','blue');
+    })
+    
+</script>
+
+<!-- 
+
+Basic Event Handling:
+    What is the syntax to attach a click event to a button with the ID #myButton in jQuery?
+    How can you attach a hover event that changes the background color of a <div> with the class .box when the mouse enters and leaves? 
+
+Event Delegation:
+    What is event delegation, and why is it useful in jQuery?
+    How do you attach a click event to dynamically added <li> elements within a <ul> with the class .list?
+        
+        
+        
+-->
+
