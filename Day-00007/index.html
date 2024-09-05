@@ -7,6 +7,11 @@
 </head>
 <body>
     <div style="height:30px; background-color: blue;" class="box"></div>
+    <ul class="list">
+        <li id="item-1">1</li>
+        <li id="item-2">2</li>
+        <li id="item-3">3</li>
+    </ul>
     <button type="button" id="myButton">Click me</button>
 </body>
 </html>
@@ -20,6 +25,10 @@
         $(this).css('background-color','red');
     },function(){
         $(this).css('background-color','blue');
+    })
+
+    $('.list').click(function (e){
+        $(`#${e.target.id}`).text("hi");
     })
     
 </script>
