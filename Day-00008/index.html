@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height:30px; background-color: blue;" class="box"></div>
+    <ul class="list">
+        <li id="item-1">1</li>
+        <li id="item-2">2</li>
+        <li id="item-3">3</li>
+    </ul>
+    <button type="button" id="myButton">Click me</button>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('#myButton').on('click',function(){
+        console.log('clicked');
+        $('#item-1').trigger("myCustomEvent");
+    })
+    $('#item-1').on('myCustomEvent',function(){
+        console.log('custom event initiated');
+    })
+
+    
+</script>
+
+<!-- 
+
+Event Triggering:
+    How can you programmatically trigger a click event on a button with the ID #submitButton?
+    Describe how to trigger a custom event called myCustomEvent on a <div> element.
+        
+        
+-->
+
