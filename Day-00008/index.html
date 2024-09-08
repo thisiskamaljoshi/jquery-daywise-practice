@@ -6,11 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <div style="height:30px; background-color: blue;" class="box"></div>
+    <div style="height:30px; width:30px; background-color: blue; position: relative;" class="box"></div>
     <ul class="list">
         <li id="item-1">1</li>
-        <li id="item-2">2</li>
-        <li id="item-3">3</li>
+        <li id="item-2" style=" display:none;">2</li>
+        <li id="item-3" style="border:1px solid red;">3</li>
     </ul>
     <button type="button" id="myButton">Click me</button>
 </body>
@@ -19,11 +19,29 @@
 <script>
     $('#myButton').on('click',function(){
         console.log('clicked');
+        $('#item-2').slideDown('slow');
         $('#item-1').trigger("myCustomEvent");
     })
     $('#item-1').on('myCustomEvent',function(){
         console.log('custom event initiated');
     })
+
+    $('#item-3').mouseenter(function (){
+        console.log("mouse enter");
+    }).mouseleave(function(){
+        console.log("mouse leave");
+    })
+
+    $(".box").on('click',function (){
+        console.log('animate');
+        $(this).animate({'left':'+=100'},'slow');
+
+        
+    })
+
+    
+
+
 
     
 </script>
@@ -33,7 +51,16 @@
 Event Triggering:
     How can you programmatically trigger a click event on a button with the ID #submitButton?
     Describe how to trigger a custom event called myCustomEvent on a <div> element.
-        
+
+Chaining Events:
+    How would you handle both mouseenter and mouseleave events on a <div> using method chaining in jQuery?
+
+Custom Animations:
+    How do you create a custom animation that moves a <div> 100 pixels to the right using jQuery?
+    What parameters can you pass to the .animate() method to control the duration and easing of an animation?     
+      
+Effects with Callbacks:
+    Provide an example of using a callback function with the .slideDown() effect.
         
 -->
 
