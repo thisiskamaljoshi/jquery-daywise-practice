@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height:30px; width:30px; background-color: blue; position: relative;" class="box"></div>
+    <ul class="list">
+        <li id="item-1 ">1</li>
+        <li id="item-2" style=" display:none;">2</li>
+        <li id="item-3" style="border:1px solid red;">3</li>
+    </ul>
+    <button type="button" id="myButton">Click me</button>
+    <button type="button" id="singleClick">Single Click</button>
+    <button type="button" id="singleJQ1">Single Jquery</button>
+    <button type="button" id="singleJQ2">Single Jquery</button>
+    <button type="button" id="singleJQ3">Single Jquery</button>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('#myButton').on('click',function(){
+        console.log('clicked');
+        $('#item-2').slideDown('slow');
+        $('#item-1').trigger("myCustomEvent");
+    })
+
+    $('#singleClick').one('click',function(){
+        console.log('Single Click');
+    })
+
+    $('#singleJQ1,#singleJQ2,#singleJQ3').on('click.singleNamespace',function(){
+        console.log('Single Jquery');
+    })
+
+    $('#singleJQ2').off('click.singleNamespace');
+    
+</script>
+
+<!-- 
+
+Event Triggering:
+    How can you programmatically trigger a click event on a button with the ID #submitButton?
+    Describe how to trigger a custom event called myCustomEvent on a <div> element.
+
+Chaining Events:
+    How would you handle both mouseenter and mouseleave events on a <div> using method chaining in jQuery?
+
+Custom Animations:
+    How do you create a custom animation that moves a <div> 100 pixels to the right using jQuery?
+    What parameters can you pass to the .animate() method to control the duration and easing of an animation?     
+      
+Effects with Callbacks:
+    Provide an example of using a callback function with the .slideDown() effect.
+
+One-Time Event Handling:    
+    What method would you use to bind a one-time click event to a button with the ID #singleClick?
+
+Event Handling for Multiple Elements:
+    How can you bind a click event to multiple buttons with different IDs, using a single jQuery statement?
+    Describe how you would remove a specific event handler from an element without affecting other handlers.
+        
+-->
+
