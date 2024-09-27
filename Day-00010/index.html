@@ -22,10 +22,21 @@
             justify-content: space-between;
         }
         .animated-menu-item {
+            position: relative;
             list-style: none;
             border: 3px solid aliceblue;
             padding: 5px 10px;
             background-color: bisque;
+        }
+        .tip{
+            position: absolute;
+            top:-70px;
+            right:50%;
+            transform: translate(50% ,50%);
+            background-color: rebeccapurple;
+            color:#fff;
+            padding: 5px 10px;
+            width:max-content;
         }
     </style>
 </head>
@@ -42,9 +53,9 @@
         <p>Characters remaining = <span id="char-left2"></span></p>
     </div>
     <menu class="animated-menu">
-        <li class="animated-menu-item">Home</li>
-        <li class="animated-menu-item">About</li>
-        <li class="animated-menu-item">Contact</li>
+        <li class="animated-menu-item" data-tooltip="Home"><span>Home</span></li>
+        <li class="animated-menu-item" data-tooltip="About"><span>About</span></li>
+        <li class="animated-menu-item" data-tooltip="Contact"><span>Contact</span></li>
     </menu>
 </body>
 </html>
@@ -94,6 +105,13 @@
             $(this).val(inputValue.slice(0,100));
             $('#char-left2').text("None Left");
         }
+    })
+    $('.animated-menu-item').hover(function (){
+        let tooltip = $(this).data('tooltip');
+        $(`<p class="tip">${tooltip}</p>`).appendTo($(this));
+    },function (){
+        let tooltip = $(this).data('tooltip');
+        $('.tip').remove();
     })
 </script>
 
