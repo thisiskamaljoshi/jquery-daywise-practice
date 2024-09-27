@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main-div{
+            position: relative;
+        }
+        .small-paint{
+            width:50px;
+            height:50px;
+        }
+        .big-paint{
+            position: absolute;
+            width:100px;
+            height: 100px;
+        }
+        .animated-menu {
+            display: flex;
+            justify-content: space-between;
+        }
+        .animated-menu-item {
+            list-style: none;
+            border: 3px solid aliceblue;
+            padding: 5px 10px;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <img src="./painting.jpg" class="small-paint" id="painting" alt="" srcset="">
+    </div>
+    <div class="textcharcount">
+        <textarea name="" id="textcount" cols="30" rows="10"></textarea>
+        <p>Characters remaining = <span id="char-left"></span></p>
+    </div>
+    <div class="textcharcount">
+        <textarea name="" id="textcount2" cols="30" rows="10"></textarea>
+        <p>Characters remaining = <span id="char-left2"></span></p>
+    </div>
+    <menu class="animated-menu">
+        <li class="animated-menu-item">Home</li>
+        <li class="animated-menu-item">About</li>
+        <li class="animated-menu-item">Contact</li>
+    </menu>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    //on hover of an image display same image but zoomed version of it as a tooltip , and 
+    let xOffset = 25;
+    let yOffset = 25;
+    let src;
+    let maxChars = 100;
+    $("#painting").hover(function (e){
+        src = $(this).attr('src');
+        $(`<img src=${src} class="big-paint" id="big-painting" />`)
+        .css('left',e.pageX + xOffset)
+        .css('top',e.pageY + yOffset)
+        .appendTo('body')
+        .hide()
+        .fadeIn(1000);
+    },function(){
+        $('#big-painting').remove();
+    })
+    $("#painting").mousemove(function (e){
+        $(`#big-painting `)
+        .css('left',e.pageX + xOffset)
+        .css('top',e.pageY + yOffset)
+    })
+    //show no of characters left 
+    $('#textcount').on('input',function(){
+        let charsRemaining = maxChars - $(this).val().length;
+        $('#char-left').text(charsRemaining);  
+    })
+    //understand focus and blur
+    $('#textcount2').on('focus',function (){
+        console.log('Focus');
+    })
+    $('#textcount2').on('blur',function (){
+        console.log('bslur');
+    })
+    //show no of characters left and remove any more chars than 100
+    $('#textcount2').on('keyup mouseup',function (){
+        let inputValue = $(this).val();
+        console.log("keyup mouseup");
+        let charsRemaining = maxChars - inputValue.length;
+        if(charsRemaining > 0){
+            $('#char-left2').text(charsRemaining);
+        }else{
+            $(this).val(inputValue.slice(0,100));
+            $('#char-left2').text("None Left");
+        }
+    })
+</script>
+
+
+
+
