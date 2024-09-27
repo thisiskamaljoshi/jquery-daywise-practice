@@ -30,7 +30,7 @@
         }
         .tip{
             position: absolute;
-            top:-70px;
+            top:-80px;
             right:50%;
             transform: translate(50% ,50%);
             background-color: rebeccapurple;
@@ -53,9 +53,9 @@
         <p>Characters remaining = <span id="char-left2"></span></p>
     </div>
     <menu class="animated-menu">
-        <li class="animated-menu-item" data-tooltip="Home"><span>Home</span></li>
-        <li class="animated-menu-item" data-tooltip="About"><span>About</span></li>
-        <li class="animated-menu-item" data-tooltip="Contact"><span>Contact</span></li>
+        <li class="animated-menu-item" data-tooltip="This is home"><span>Home</span></li>
+        <li class="animated-menu-item" data-tooltip="This is About"><span>About</span></li>
+        <li class="animated-menu-item" data-tooltip="This is Contact"><span>Contact</span></li>
     </menu>
 </body>
 </html>
@@ -108,9 +108,10 @@
     })
     $('.animated-menu-item').hover(function (){
         let tooltip = $(this).data('tooltip');
-        $(`<p class="tip">${tooltip}</p>`).appendTo($(this));
+        $(`<p class="tip">${tooltip}</p>`).appendTo($(this)).stop().animate({
+            'top':'-70','opacity':'show'
+        },'slow');
     },function (){
-        let tooltip = $(this).data('tooltip');
         $('.tip').remove();
     })
 </script>
