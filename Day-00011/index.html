@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rating{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        ul {
+            list-style-type: none; /* Remove default bullet points */
+        }
+
+        .star {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 90px solid yellow;
+            position: relative;
+            margin: 50px 0; /* Spacing for visibility */
+        }
+
+        .star.rated{
+            border-bottom: 90px solid green;
+        }
+
+        .star:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-top: 90px solid yellow;
+            position: absolute;
+            top: 30px;
+            left: -50px;
+        }
+
+        .star.rated:before{
+            border-top: 90px solid green;
+        }
+
+    </style>
+</head>
+<body>
+    <ul class="rating">
+        <li class="star" data-rating="1"></li>
+        <li class="star" data-rating="2"></li>
+        <li class="star" data-rating="3"></li>
+        <li class="star" data-rating="4"></li>
+        <li class="star" data-rating="5"></li>
+    </ul>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    $('.rating').on('mouseenter', '.star', function(e) {
+        let hoveredRating = $(this).data('rating');
+        
+        if (e.relatedTarget) {
+            $(e.relatedTarget).find('.star').each(function() {
+                if($(this).data('rating') <= hoveredRating ){
+                    $(this).addClass('rated');
+                }
+            });
+        } else {
+            console.log("No related target");
+        }
+    }).on('mouseleave', '.star', function(e) {
+        let hoveredRating = $(this).data('rating');
+        if (e.relatedTarget) {
+            $(e.relatedTarget).find('.star').each(function() {
+                if($(this).data('rating') <= hoveredRating ){
+                    $(this).removeClass('rated');
+                }
+            });
+        } else {
+            console.log("No related target");
+        }
+    });
+</script>
+
+
+
+
