@@ -20,7 +20,7 @@
             border-right: 50px solid transparent;
             border-bottom: 90px solid yellow;
             position: relative;
-            margin: 50px 0; /* Spacing for visibility */
+            margin: 10px 0; /* Spacing for visibility */
         }
 
         .star.rated{
@@ -57,29 +57,17 @@
 </html>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script>
-    $('.rating').on('mouseenter', '.star', function(e) {
+    $('.rating').on('mouseenter', '.star', function() {
         let hoveredRating = $(this).data('rating');
         
-        if (e.relatedTarget) {
-            $(e.relatedTarget).find('.star').each(function() {
-                if($(this).data('rating') <= hoveredRating ){
-                    $(this).addClass('rated');
-                }
-            });
-        } else {
-            console.log("No related target");
-        }
-    }).on('mouseleave', '.star', function(e) {
-        let hoveredRating = $(this).data('rating');
-        if (e.relatedTarget) {
-            $(e.relatedTarget).find('.star').each(function() {
-                if($(this).data('rating') <= hoveredRating ){
-                    $(this).removeClass('rated');
-                }
-            });
-        } else {
-            console.log("No related target");
-        }
+        // Loop through all stars and add class 'rated' if their rating is <= hoveredRating
+        $('.star').each(function() {
+            if ($(this).data('rating') <= hoveredRating) {
+                $(this).addClass('rated');
+            }
+        });
+    }).on('mouseleave', '.star', function() {
+        $('.star').removeClass('rated');
     });
 </script>
 
